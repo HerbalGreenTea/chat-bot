@@ -1,7 +1,5 @@
 package org.bot.commands;
 
-import org.bot.DataIO;
-
 public record HelpBotCommand(
         BotCommands botCommands
 ) implements IBotCommand{
