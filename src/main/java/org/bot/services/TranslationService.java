@@ -11,11 +11,10 @@ public class TranslationService implements IServiceBot {
     private int numberLexicalPair = 0;
 
     public TranslationService() {
-        var answer = new ArrayList<String>();
-        answer.add("тест");
-        var l1 = new LexicalPair("test", "", answer);
         dictionary = new ArrayList<>();
-        dictionary.add(l1);
+        dictionary.add(LexicalPair.create("cat", "кошка"));
+        dictionary.add(LexicalPair.create("dog", "собака"));
+        dictionary.add(LexicalPair.create("home", "дом"));
     }
 
     @Override

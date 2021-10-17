@@ -4,9 +4,15 @@ import java.util.ArrayList;
 
 public class LexicalPair {
 
-    private String wordInEnglish;
+    private final String wordInEnglish;
     private String transcription = "";
-    private ArrayList<String> wordTranslation;
+    private final ArrayList<String> wordTranslation;
+
+    public static LexicalPair create(String word, String wordTranslation) {
+        var answers = new ArrayList<String>();
+        answers.add(wordTranslation);
+        return new LexicalPair(word, "", answers);
+    }
 
     public LexicalPair(String wordInEnglish, String transcription, ArrayList<String> wordTranslation) {
         this.wordInEnglish = wordInEnglish;

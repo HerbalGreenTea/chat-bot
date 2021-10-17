@@ -32,9 +32,9 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
 
         if (userMessage != null) {
             SendMessage sendMessage = new SendMessage();
-            sendMessage.setChatId(update.getMessage().getChatId().toString());
+            sendMessage.setChatId(userMessage.getMessage().getChatId().toString());
 
-            var sendMessages = currentUser.getUserSession().handleUserMessage(update.getMessage().getText());
+            var sendMessages = currentUser.getUserSession().handleUserMessage(userMessage.getMessage().getText());
 
             for (String message: sendMessages) {
                 sendMessage.setText(message);

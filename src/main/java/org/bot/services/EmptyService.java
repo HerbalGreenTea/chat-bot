@@ -15,6 +15,6 @@ public class EmptyService implements IServiceBot{
 
     @Override
     public String processUserMessage(String message) {
-        return "call \\help to find out the capabilities of the bot";
+        return "вызови \\help чтобы узнать возможности бота";
     }
 }

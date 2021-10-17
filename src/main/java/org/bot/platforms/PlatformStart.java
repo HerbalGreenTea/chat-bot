@@ -1,6 +1,5 @@
 package org.bot.platforms;
 
-import org.bot.platforms.console.ChatBotConsole;
 import org.bot.platforms.telegram.ChatBotTelegram;
 import org.bot.user.User;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -16,10 +15,12 @@ public class PlatformStart {
             case TELEGRAM -> {
                 try {
                     TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-                    botsApi.registerBot(new ChatBotTelegram(
+                    var chatBot = new ChatBotTelegram(
                             user,
-                            "",
-                            ""));
+                            "LearningLanguageEnglishBot",
+                            "2004830155:AAGrzXPOUXBg-s6dITz8KfAzkp-bmsByt4A"
+                    );
+                    botsApi.registerBot(chatBot);
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }

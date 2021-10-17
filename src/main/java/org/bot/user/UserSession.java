@@ -29,8 +29,6 @@ public class UserSession {
         var response = new ArrayList<String>();
 
         if (commandsHandler.isBotCommand(message)) {
-            // TODO ваще не прикольно, как миниум должна возвращаться не строка а какой-то класс с дежнериком
-            // но это тоже не очень то работает (класс с дженериком)
             var commandResult = commandsHandler.handleCommand(message);
 
             if (!commandResult.isBlank()) {
