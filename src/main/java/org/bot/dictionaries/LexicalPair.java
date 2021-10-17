@@ -1,4 +1,4 @@
-package org.bot;
+package org.bot.dictionaries;
 
 import java.util.ArrayList;
 

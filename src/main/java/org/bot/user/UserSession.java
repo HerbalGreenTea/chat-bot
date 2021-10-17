@@ -1,9 +1,9 @@
 package org.bot.user;
 
-import org.bot.ChatBotPreference;
 import org.bot.commands.CommandsHandler;
 import org.bot.services.IServiceBot;
 import org.bot.services.ServiceFactory;
+import org.bot.statistics.StatisticsInteractor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +11,19 @@ import java.util.Objects;
 
 public class UserSession {
 
-    private final ChatBotPreference chatBotPreference;
+    private final UserPreference userPreference;
     private final CommandsHandler commandsHandler;
     private final ServiceFactory serviceFactory;
+    private final StatisticsInteractor statisticsInteractor;
 
     private IServiceBot currentService;
 
     public UserSession() {
-        this.chatBotPreference = new ChatBotPreference();
-        this.commandsHandler = new CommandsHandler(chatBotPreference);
+        this.userPreference = new UserPreference();
+        this.statisticsInteractor = new StatisticsInteractor(userPreference);
+        this.commandsHandler = new CommandsHandler(userPreference, statisticsInteractor);
         this.serviceFactory = new ServiceFactory();
-        this.currentService = serviceFactory.createService(chatBotPreference.getSelectedTypeService());
+        this.currentService = serviceFactory.createService(userPreference.getSelectedTypeService());
     }
 
 
@@ -35,8 +37,8 @@ public class UserSession {
                 response.add(commandResult);
             }
 
-            if (currentService.getServiceType() != chatBotPreference.getSelectedTypeService()) {
-                currentService = serviceFactory.createService(chatBotPreference.getSelectedTypeService());
+            if (currentService.getServiceType() != userPreference.getSelectedTypeService()) {
+                currentService = serviceFactory.createService(userPreference.getSelectedTypeService());
                 response.add(currentService.getMessageForUser());
             }
 

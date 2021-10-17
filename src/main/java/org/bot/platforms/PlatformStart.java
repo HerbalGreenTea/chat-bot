@@ -10,7 +10,7 @@ public class PlatformStart {
     public static void start(TypePlatform typePlatform, User user) {
         switch (typePlatform) {
             case CONSOLE -> {
-
+                // TODO хихи, допилить
             }
             case TELEGRAM -> {
                 try {
@@ -18,7 +18,7 @@ public class PlatformStart {
                     var chatBot = new ChatBotTelegram(
                             user,
                             "LearningLanguageEnglishBot",
-                            "2004830155:AAGrzXPOUXBg-s6dITz8KfAzkp-bmsByt4A"
+                            "2020813434:AAHkHHyxjKtkCxqWazX4Xn4OtovOfm8c9Hs"
                     );
                     botsApi.registerBot(chatBot);
                 } catch (TelegramApiException e) {

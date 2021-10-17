@@ -1,13 +1,14 @@
 package org.bot.commands;
 
-import org.bot.ChatBotPreference;
+import org.bot.statistics.StatisticsInteractor;
+import org.bot.user.UserPreference;
 
 public class CommandsHandler {
 
     private final BotCommands botCommands;
 
-    public CommandsHandler(ChatBotPreference chatBotPreference) {
-        botCommands = new BotCommands(chatBotPreference);
+    public CommandsHandler(UserPreference userPreference, StatisticsInteractor statisticsInteractor) {
+        botCommands = new BotCommands(userPreference, statisticsInteractor);
     }
 
     public String handleCommand(String command) {

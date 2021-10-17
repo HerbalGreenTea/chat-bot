@@ -1,17 +1,15 @@
-package org.bot;
+package org.bot.user;
 
 import org.bot.services.TypeService;
 
-public class ChatBotPreference {
+import java.util.Objects;
+
+public class UserPreference {
 
     private TypeService selectedTypeService;
 
     public TypeService getSelectedTypeService() {
-        if (selectedTypeService == null) {
-            return TypeService.EMPTY_SERVICE;
-        }
-
-        return selectedTypeService;
+        return Objects.requireNonNullElse(selectedTypeService, TypeService.EMPTY_SERVICE);
     }
 
     public void selectTypeService(TypeService typeService) {

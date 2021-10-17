@@ -1,6 +1,6 @@
 package org.bot.services;
 
-import org.bot.LexicalPair;
+import org.bot.dictionaries.LexicalPair;
 
 import java.util.ArrayList;
 
