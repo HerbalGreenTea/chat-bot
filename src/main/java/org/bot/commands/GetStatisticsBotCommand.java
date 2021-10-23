@@ -15,6 +15,6 @@ public record GetStatisticsBotCommand(StatisticsInteractor statisticsInteractor)
 
     @Override
     public String execute() {
-        return null;
+        return statisticsInteractor.getAllStatistics();
     }
 }

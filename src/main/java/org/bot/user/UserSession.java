@@ -22,7 +22,7 @@ public class UserSession {
         this.userPreference = new UserPreference();
         this.statisticsInteractor = new StatisticsInteractor(userPreference);
         this.commandsHandler = new CommandsHandler(userPreference, statisticsInteractor);
-        this.serviceFactory = new ServiceFactory();
+        this.serviceFactory = new ServiceFactory(userPreference);
         this.currentService = serviceFactory.createService(userPreference.getSelectedTypeService());
     }
 

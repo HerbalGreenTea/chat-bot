@@ -9,7 +9,11 @@ public interface ILexicalDictionary {
 
     List<LexicalPair> getIncorrectlyTranslatedWords();
 
+    void addTranslatedWord(Boolean isCorrectTranslate, LexicalPair lexicalPair);
+
     List<LexicalPair> getLearnedWords();
 
     List<LexicalPair> getUnlearnedWords();
+
+    void addLearnedOrUnlearnedWord(Boolean isLearned, LexicalPair lexicalPair);
 }
