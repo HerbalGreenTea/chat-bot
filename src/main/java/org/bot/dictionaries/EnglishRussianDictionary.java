@@ -16,14 +16,14 @@ public class EnglishRussianDictionary implements ILexicalDictionary {
         words.add(LexicalPair.create("cat", "кошка"));
         words.add(LexicalPair.create("dog", "собака"));
         words.add(LexicalPair.create("home", "дом"));
-//        words.add(LexicalPair.create("page", "страница"));
-//        words.add(LexicalPair.create("ring", "кольцо"));
-//        words.add(LexicalPair.create("fire", "огонь"));
-//        words.add(LexicalPair.create("or", "или"));
-//        words.add(LexicalPair.create("and", "и"));
-//        words.add(LexicalPair.create("river", "река"));
-//        words.add(LexicalPair.create("city", "город"));
-//        words.add(LexicalPair.create("water", "вода"));
+        words.add(LexicalPair.create("page", "страница"));
+        words.add(LexicalPair.create("ring", "кольцо"));
+        words.add(LexicalPair.create("fire", "огонь"));
+        words.add(LexicalPair.create("or", "или"));
+        words.add(LexicalPair.create("and", "и"));
+        words.add(LexicalPair.create("river", "река"));
+        words.add(LexicalPair.create("city", "город"));
+        words.add(LexicalPair.create("water", "вода"));
     }
 
     @Override

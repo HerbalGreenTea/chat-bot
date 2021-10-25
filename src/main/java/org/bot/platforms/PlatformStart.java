@@ -17,8 +17,8 @@ public class PlatformStart {
                     TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
                     var chatBot = new ChatBotTelegram(
                             user,
-                            "LearningLanguageEnglishBot",
-                            "2020813434:AAHkHHyxjKtkCxqWazX4Xn4OtovOfm8c9Hs"
+                            "LearningLanguageEnglishNewBot",
+                            "2073706792:AAGSSt3x6sS0AL8nzLqEvDMDIar-9cZg368"
                     );
                     botsApi.registerBot(chatBot);
                 } catch (TelegramApiException e) {
