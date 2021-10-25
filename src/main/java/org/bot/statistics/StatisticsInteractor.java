@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 public record StatisticsInteractor(UserPreference userPreference) {
 
     public String getAllStatistics() {
-        return getTimeInApp() + "\n" + getTranslatedWords();
+        return getTimeInApp() + "\n" + getTranslatedWords() + "\n" + getLearnedAndUnlearnedWords();
     }
 
     public String getTimeInApp() {
@@ -31,6 +31,17 @@ public record StatisticsInteractor(UserPreference userPreference) {
                 "верно переведно %d слов\nне верно переведено %d слов",
                 correctlyWords.size(),
                 incorrectlyWords.size()
+        );
+    }
+
+    public String getLearnedAndUnlearnedWords() {
+        var learnedWords = userPreference.getLexicalDictionary().getLearnedWords();
+        var unlearnedWords = userPreference.getLexicalDictionary().getUnlearnedWords();
+
+        return String.format(
+                "изучено %d слов\nне изучено %d слов",
+                learnedWords.size(),
+                unlearnedWords.size()
         );
     }
 }

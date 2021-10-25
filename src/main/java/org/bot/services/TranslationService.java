@@ -24,7 +24,7 @@ public class TranslationService implements IServiceBot {
 
     @Override
     public String getMessageForUser() {
-        return "попробуй перевести слово - " + words.get(numberLexicalPair).getWordInEnglish();
+        return "попробуй перевести слово - " + words.get(numberLexicalPair).wordInEnglish();
     }
 
     @Override

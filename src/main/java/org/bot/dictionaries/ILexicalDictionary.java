@@ -1,19 +1,20 @@
 package org.bot.dictionaries;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ILexicalDictionary {
     List<LexicalPair> getAllWords();
 
-    List<LexicalPair> getCorrectlyTranslatedWords();
+    Set<LexicalPair> getCorrectlyTranslatedWords();
 
-    List<LexicalPair> getIncorrectlyTranslatedWords();
+    Set<LexicalPair> getIncorrectlyTranslatedWords();
 
     void addTranslatedWord(Boolean isCorrectTranslate, LexicalPair lexicalPair);
 
-    List<LexicalPair> getLearnedWords();
+    Set<LexicalPair> getLearnedWords();
 
-    List<LexicalPair> getUnlearnedWords();
+    Set<LexicalPair> getUnlearnedWords();
 
-    void addLearnedOrUnlearnedWord(Boolean isLearned, LexicalPair lexicalPair);
+    void addLearnedOrUnlearnedWord(LexicalPair lexicalPair);
 }
