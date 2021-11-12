@@ -1,20 +1,20 @@
 package org.bot.services;
 
-import org.bot.LexicalPair;
+import org.bot.dictionaries.ILexicalDictionary;
+import org.bot.dictionaries.LexicalPair;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class TranslationService implements IServiceBot {
 
     // TODO словарь вынести в отдельный класс по работе с лексическими парами
-    private final ArrayList<LexicalPair> dictionary;
+    private final ILexicalDictionary dictionary;
+    private final List<LexicalPair> words;
     private int numberLexicalPair = 0;
 
-    public TranslationService() {
-        dictionary = new ArrayList<>();
-        dictionary.add(LexicalPair.create("cat", "кошка"));
-        dictionary.add(LexicalPair.create("dog", "собака"));
-        dictionary.add(LexicalPair.create("home", "дом"));
+    public TranslationService(ILexicalDictionary dictionary) {
+        this.dictionary = dictionary;
+        this.words = dictionary.getAllWords();
     }
 
     @Override
@@ -24,25 +24,27 @@ public class TranslationService implements IServiceBot {
 
     @Override
     public String getMessageForUser() {
-        return "попробуй перевести слово - " + dictionary.get(numberLexicalPair).getWordInEnglish();
+        return "попробуй перевести слово - " + words.get(numberLexicalPair).wordInEnglish();
     }
 
     @Override
     public String processUserMessage(String message) {
-        var lexicalPair = getNexPair();
+        var lexicalPair = getNextPair();
+
+        dictionary.addTranslatedWord(lexicalPair.isCorrect(message), lexicalPair);
 
         if (lexicalPair.isCorrect(message)) {
-            return  "все верно!";
+            return "все верно!";
         } else {
-            return  "попробуй другое слово";
+            return "попробуй другое слово";
         }
     }
 
-    private LexicalPair getNexPair() {
+    private LexicalPair getNextPair() {
         // TODO тож чото так себе тема
-        var currentLexicalPair = dictionary.get(numberLexicalPair);
+        var currentLexicalPair = words.get(numberLexicalPair);
 
-        if (numberLexicalPair < (dictionary.size() - 1)) {
+        if (numberLexicalPair < (words.size() - 1)) {
             numberLexicalPair += 1;
         } else {
             numberLexicalPair = 0;

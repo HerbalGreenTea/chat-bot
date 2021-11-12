@@ -1,10 +1,10 @@
 package org.bot.commands;
 
-import org.bot.ChatBotPreference;
 import org.bot.services.TypeService;
+import org.bot.user.UserPreference;
 
 public record SelectTranslationServiceBotCommand(
-        ChatBotPreference chatBotPreference
+        UserPreference userPreference
 ) implements IBotCommand {
 
     @Override
@@ -19,7 +19,7 @@ public record SelectTranslationServiceBotCommand(
 
     @Override
     public String execute() {
-        chatBotPreference.selectTypeService(TypeService.TRANSLATION_SERVICE);
+        userPreference.selectTypeService(TypeService.TRANSLATION_SERVICE);
 
         return "";
     }
