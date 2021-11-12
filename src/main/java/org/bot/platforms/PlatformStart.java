@@ -18,7 +18,7 @@ public class PlatformStart {
                     var chatBot = new ChatBotTelegram(
                             user,
                             "LearningLanguageEnglishNewBot",
-                            "2073706792:AAGSSt3x6sS0AL8nzLqEvDMDIar-9cZg368"
+                            ""
                     );
                     botsApi.registerBot(chatBot);
                 } catch (TelegramApiException e) {
