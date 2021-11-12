@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.stephanenicolas.toothpick/toothpick-compiler/3.1.0/102e16e612b4c37a2216a1a8d9398ab42e4fa7f9/toothpick-compiler-3.1.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.stephanenicolas.toothpick/toothpick/3.1.0/e8e2d5841aa155682ad9218c6b24f5dbca7b935d/toothpick-3.1.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.11.1/210e69f58dfa76c5529a303913b4a30c2bfeb76b/javapoet-1.11.1.jar" />
+        </processorPath>
+        <module name="langChatBot.main" />
+      </profile>
+    </annotationProcessing>
     <bytecodeTargetLevel target="16" />
   </component>
 </project>
