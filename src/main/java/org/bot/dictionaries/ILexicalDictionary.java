@@ -16,5 +16,5 @@ public interface ILexicalDictionary {
 
     Set<LexicalPair> getUnlearnedWords();
 
-    void addLearnedOrUnlearnedWord(LexicalPair lexicalPair);
+    void updateStatusWord(LexicalPair lexicalPair);
 }

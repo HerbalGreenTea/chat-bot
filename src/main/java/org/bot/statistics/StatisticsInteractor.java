@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StatisticsInteractor {
 
-    private List<IStatistics> statistics;
+    private final List<IStatistics> statistics;
 
     public StatisticsInteractor(UserPreference userPreference) {
         this.statistics = new ArrayList<>();
@@ -21,7 +21,7 @@ public class StatisticsInteractor {
     public String getAllStatistics() {
         var dataStat = new StringBuilder();
         for (IStatistics statistic : statistics) {
-            dataStat.append(statistic.getStatistics());
+            dataStat.append(statistic.getTextFormatStatistics());
             dataStat.append("\n");
         }
         return dataStat.toString();

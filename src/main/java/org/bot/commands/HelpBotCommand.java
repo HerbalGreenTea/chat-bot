@@ -4,8 +4,6 @@ public record HelpBotCommand(
         BotCommands botCommands
 ) implements IBotCommand{
 
-    // TODO возможно не очень хорошо, что команда знает о всех командах
-
     @Override
     public String getCommandName() {
         return "\\help";

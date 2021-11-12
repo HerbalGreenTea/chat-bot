@@ -6,7 +6,7 @@ public class EnglishRussianDictionary implements ILexicalDictionary {
 
     private static Integer COUNT_REPEAT_FOR_LEARN = 3;
 
-    private final Map<LexicalPair, Integer> correctlyTranslatedWords = new HashMap<>(); // todo
+    private final Map<LexicalPair, Integer> correctlyTranslatedWords = new HashMap<>();
     private final Map<LexicalPair, Integer> incorrectlyTranslatedWords = new HashMap<>();
     private final Set<LexicalPair> learnedWords = new HashSet<>();
     private final Set<LexicalPair> unlearnedWords = new HashSet<>();
@@ -35,14 +35,14 @@ public class EnglishRussianDictionary implements ILexicalDictionary {
     public void addTranslatedWord(Boolean isCorrectTranslate, LexicalPair lexicalPair) {
         if (isCorrectTranslate) {
             correctlyTranslatedWords.merge(lexicalPair, 1, Integer::sum);
-            addLearnedOrUnlearnedWord(lexicalPair);
+            updateStatusWord(lexicalPair);
         } else {
             incorrectlyTranslatedWords.merge(lexicalPair, 1, Integer::sum);
         }
     }
 
     @Override
-    public void addLearnedOrUnlearnedWord(LexicalPair lexicalPair) { // todo Update
+    public void updateStatusWord(LexicalPair lexicalPair) {
         if (Objects.equals(correctlyTranslatedWords.get(lexicalPair), COUNT_REPEAT_FOR_LEARN)) {
             learnedWords.add(lexicalPair);
             unlearnedWords.remove(lexicalPair);

@@ -1,16 +1,29 @@
 package org.bot.statistics;
 
 import org.bot.dictionaries.ILexicalDictionary;
+import org.bot.dictionaries.LexicalPair;
 
-public record TranslatedWordsStatistics(
-        ILexicalDictionary lexicalDictionary
-) implements IStatistics {
+import java.util.Set;
+
+public class TranslatedWordsStatistics implements IStatistics {
+
+    private final ILexicalDictionary lexicalDictionary;
+    private Set<LexicalPair> correctlyWords;
+    private Set<LexicalPair> incorrectlyWords;
+
+    public TranslatedWordsStatistics(ILexicalDictionary lexicalDictionary) {
+        this.lexicalDictionary = lexicalDictionary;
+    }
 
     @Override
-    public String getStatistics() {
-        var correctlyWords = lexicalDictionary.getCorrectlyTranslatedWords();
-        var incorrectlyWords = lexicalDictionary.getIncorrectlyTranslatedWords();
+    public void createStatistics() {
+        correctlyWords = lexicalDictionary.getCorrectlyTranslatedWords();
+        incorrectlyWords = lexicalDictionary.getIncorrectlyTranslatedWords();
+    }
 
+    @Override
+    public String getTextFormatStatistics() {
+        createStatistics();
         return String.format(
                 "верно переведно %d слов\nне верно переведено %d слов",
                 correctlyWords.size(),

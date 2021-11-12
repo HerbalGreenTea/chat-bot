@@ -1,9 +1,10 @@
 package org.bot.dictionaries;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public record LexicalPair(
-        String wordInEnglish, //todo жесткая завязка на английский
+        String word,
         String transcription,
         ArrayList<String> wordTranslation
 ) {
@@ -13,8 +14,7 @@ public record LexicalPair(
         return new LexicalPair(word, "", answers);
     }
 
-    // todo: чувствительно к регистрам WARN!!
     public Boolean isCorrect(String answer) {
-        return wordTranslation.contains(answer);
+        return wordTranslation.contains(answer.toLowerCase(Locale.ROOT));
     }
 }

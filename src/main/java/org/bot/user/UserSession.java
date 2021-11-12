@@ -45,7 +45,6 @@ public class UserSession {
         } else {
             response.add(currentService.processUserMessage(message));
 
-            // TODO придумать чонть получше
             if (!Objects.equals(currentService.getMessageForUser(), ""))
                 response.add(currentService.getMessageForUser());
         }

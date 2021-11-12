@@ -13,7 +13,6 @@ public class BotCommands {
     private final List<IBotCommand> botCommands;
 
     public BotCommands(UserPreference userPreference, StatisticsInteractor statisticsInteractor) {
-        // TODO надо подумать
         botCommands = new ArrayList<>();
         {
             botCommands.add(new HelpBotCommand(this));
