@@ -1,8 +1,6 @@
 package org.bot.services;
 
 public class EmptyService implements IServiceBot{
-
-
     @Override
     public TypeService getServiceType() {
         return TypeService.EMPTY_SERVICE;

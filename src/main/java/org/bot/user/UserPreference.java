@@ -17,7 +17,6 @@ public class UserPreference {
 
     @Inject
     public UserPreference() {
-
     }
 
     public TypeService getSelectedTypeService() {

@@ -1,15 +1,8 @@
 package org.bot.commands;
 
-import org.bot.statistics.StatisticsInteractor;
-import org.bot.user.UserPreference;
-
 public class CommandsHandler {
 
-    private final BotCommands botCommands;
-
-    public CommandsHandler(UserPreference userPreference, StatisticsInteractor statisticsInteractor) {
-        botCommands = new BotCommands(userPreference, statisticsInteractor);
-    }
+    private final BotCommands botCommands = new BotCommands();
 
     public String handleCommand(String command) {
         return botCommands.getBotCommands().get(command).execute();

@@ -4,7 +4,6 @@ import org.bot.Main;
 import org.bot.commands.CommandsHandler;
 import org.bot.services.IServiceBot;
 import org.bot.services.ServiceFactory;
-import org.bot.statistics.StatisticsInteractor;
 import toothpick.Scope;
 import toothpick.Toothpick;
 
@@ -18,21 +17,15 @@ public class UserSession {
     @Inject
     UserPreference userPreference;
 
-    private final CommandsHandler commandsHandler;
-    private final ServiceFactory serviceFactory;
-    private final StatisticsInteractor statisticsInteractor;
+    private final CommandsHandler commandsHandler = new CommandsHandler();
+    private final ServiceFactory serviceFactory = new ServiceFactory();
 
-    private IServiceBot currentService;
+    private IServiceBot currentService = serviceFactory.createService();
 
     public UserSession() {
         Scope global = Toothpick.openScope(Main.NAME_GLOBAL_SCOPE);
         Toothpick.inject(this, global);
-        this.statisticsInteractor = new StatisticsInteractor();
-        this.commandsHandler = new CommandsHandler(userPreference, statisticsInteractor);
-        this.serviceFactory = new ServiceFactory(userPreference);
-        this.currentService = serviceFactory.createService(userPreference.getSelectedTypeService());
     }
-
 
     public List<String> handleUserMessage(String message) {
         var response = new ArrayList<String>();
@@ -45,7 +38,7 @@ public class UserSession {
             }
 
             if (currentService.getServiceType() != userPreference.getSelectedTypeService()) {
-                currentService = serviceFactory.createService(userPreference.getSelectedTypeService());
+                currentService = serviceFactory.createService();
                 response.add(currentService.getMessageForUser());
             }
 

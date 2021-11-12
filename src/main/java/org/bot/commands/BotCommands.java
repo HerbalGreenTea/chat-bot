@@ -1,8 +1,5 @@
 package org.bot.commands;
 
-import org.bot.statistics.StatisticsInteractor;
-import org.bot.user.UserPreference;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,12 +9,12 @@ public class BotCommands {
 
     private final List<IBotCommand> botCommands;
 
-    public BotCommands(UserPreference userPreference, StatisticsInteractor statisticsInteractor) {
+    public BotCommands() {
         botCommands = new ArrayList<>();
         {
             botCommands.add(new HelpBotCommand(this));
-            botCommands.add(new SelectTranslationServiceBotCommand(userPreference));
-            botCommands.add(new GetStatisticsBotCommand(statisticsInteractor));
+            botCommands.add(new SelectTranslationServiceBotCommand());
+            botCommands.add(new GetStatisticsBotCommand());
         }
     }
 

@@ -1,8 +1,22 @@
 package org.bot.commands;
 
+import org.bot.Main;
 import org.bot.statistics.StatisticsInteractor;
+import toothpick.Scope;
+import toothpick.Toothpick;
 
-public record GetStatisticsBotCommand(StatisticsInteractor statisticsInteractor) implements IBotCommand {
+import javax.inject.Inject;
+
+public class GetStatisticsBotCommand implements IBotCommand {
+
+    @Inject
+    StatisticsInteractor statisticsInteractor;
+
+    public GetStatisticsBotCommand() {
+        Scope global = Toothpick.openScope(Main.NAME_GLOBAL_SCOPE);
+        Toothpick.inject(this, global);
+    }
+
     @Override
     public String getCommandName() {
         return "\\stat";
