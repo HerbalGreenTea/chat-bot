@@ -3,7 +3,7 @@ package org.bot.dictionaries;
 import java.util.ArrayList;
 
 public record LexicalPair(
-        String wordInEnglish,
+        String wordInEnglish, //todo жесткая завязка на английский
         String transcription,
         ArrayList<String> wordTranslation
 ) {
@@ -13,7 +13,7 @@ public record LexicalPair(
         return new LexicalPair(word, "", answers);
     }
 
-    // todo: чувствительно к регистрам
+    // todo: чувствительно к регистрам WARN!!
     public Boolean isCorrect(String answer) {
         return wordTranslation.contains(answer);
     }
