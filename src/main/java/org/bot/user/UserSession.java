@@ -1,5 +1,6 @@
 package org.bot.user;
 
+import org.bot.GlobalFileLogger;
 import org.bot.Main;
 import org.bot.commands.CommandsHandler;
 import org.bot.services.IServiceBot;
@@ -16,6 +17,8 @@ public class UserSession {
 
     @Inject
     UserPreference userPreference;
+    @Inject
+    GlobalFileLogger globalFileLogger;
 
     private final CommandsHandler commandsHandler = new CommandsHandler();
     private final ServiceFactory serviceFactory = new ServiceFactory();
@@ -25,6 +28,7 @@ public class UserSession {
     public UserSession() {
         Scope global = Toothpick.openScope(Main.NAME_GLOBAL_SCOPE);
         Toothpick.inject(this, global);
+        globalFileLogger.logInfo("init user session");
     }
 
     public List<String> handleUserMessage(String message) {
@@ -32,6 +36,7 @@ public class UserSession {
 
         if (commandsHandler.isBotCommand(message)) {
             var commandResult = commandsHandler.handleCommand(message);
+            globalFileLogger.logInfo("execute command " + message);
 
             if (!commandResult.isBlank()) {
                 response.add(commandResult);
@@ -47,6 +52,8 @@ public class UserSession {
 
             if (!Objects.equals(currentService.getMessageForUser(), ""))
                 response.add(currentService.getMessageForUser());
+
+            globalFileLogger.logInfo("user message " + message);
         }
 
         return response;

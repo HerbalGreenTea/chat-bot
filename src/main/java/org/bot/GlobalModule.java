@@ -12,5 +12,8 @@ public class GlobalModule extends Module {
 
         StatisticsInteractor statisticsInteractor = new StatisticsInteractor();
         bind(StatisticsInteractor.class).toInstance(statisticsInteractor);
+
+        GlobalFileLogger globalFileLogger = new GlobalFileLogger();
+        bind(GlobalFileLogger.class).toInstance(globalFileLogger);
     }
 }
