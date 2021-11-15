@@ -92,7 +92,7 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
         addRowsInKeyboard(keyboard, firstKeyboardRow, secondKeyboardRow, thirdKeyboardRow);
         replykeyboardMarkup.setKeyboard(keyboard);
 
-        if (message.equals("\\help") || message.equals(helpMessage)) {
+        if (message.equals("\\help") || message.equals(helpMessage) || message.equals("/start")) {
             return "\\help";
         }
 
