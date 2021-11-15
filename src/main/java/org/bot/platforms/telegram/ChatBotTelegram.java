@@ -17,7 +17,7 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
     private final User currentUser;
     private final String botUsername;
     private final String botToken;
-    private ReplyKeyboardMarkup replykeyboardMarkup = new ReplyKeyboardMarkup();
+    private final ReplyKeyboardMarkup replykeyboardMarkup;
 
     private Update message;
 
@@ -25,6 +25,7 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
         this.currentUser = currentUser;
         this.botUsername = botUsername;
         this.botToken = botToken;
+        replykeyboardMarkup = new ReplyKeyboardMarkup();
     }
 
     @Override
@@ -92,7 +93,7 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
         addRowsInKeyboard(keyboard, firstKeyboardRow, secondKeyboardRow, thirdKeyboardRow);
         replykeyboardMarkup.setKeyboard(keyboard);
 
-        if (message.equals("\\help") || message.equals(helpMessage) || message.equals("/start")) {
+        if (message.equals((helpMessage))) {
             return "\\help";
         }
 
@@ -104,16 +105,7 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
             return "\\stat";
         }
 
-        else {
-            return message;
-        }
-    }
-
-    private void clearKeyboardAndRows(ArrayList<KeyboardRow> keyboard, KeyboardRow ... rows) {
-        keyboard.clear();
-        for (var row : rows
-        )
-            row.clear();
+        return message;
     }
 
     private void addRowsInKeyboard(ArrayList<KeyboardRow> keyboard, KeyboardRow ... rows) {
