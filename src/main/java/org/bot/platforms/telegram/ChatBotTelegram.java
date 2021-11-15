@@ -78,6 +78,7 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
         var keyboard = new ArrayList<KeyboardRow>();
         var firstKeyboardRow = new KeyboardRow();
         var secondKeyboardRow = new KeyboardRow();
+        var thirdKeyboardRow = new KeyboardRow();
         replykeyboardMarkup.setSelective(true);
         replykeyboardMarkup.setResizeKeyboard(true);
         replykeyboardMarkup.setOneTimeKeyboard(false);
@@ -85,37 +86,21 @@ public class ChatBotTelegram extends TelegramLongPollingBot implements ChatPlatf
         var helpMessage = "Помощь❔";
         var statisticMessage = "Статистика \uD83D\uDCBE";
         var translateMessage = "Переводить слова \uD83D\uDD8B";
+        firstKeyboardRow.add(translateMessage);
+        secondKeyboardRow.add(statisticMessage);
+        thirdKeyboardRow.add(helpMessage);
+        addRowsInKeyboard(keyboard, firstKeyboardRow, secondKeyboardRow, thirdKeyboardRow);
+        replykeyboardMarkup.setKeyboard(keyboard);
 
         if (message.equals("\\help") || message.equals(helpMessage)) {
-            clearKeyboardAndRows(keyboard, firstKeyboardRow, secondKeyboardRow);
-
-            firstKeyboardRow.add(translateMessage);
-            secondKeyboardRow.add(statisticMessage);
-
-            addRowsInKeyboard(keyboard, firstKeyboardRow, secondKeyboardRow);
-            replykeyboardMarkup.setKeyboard(keyboard);
             return "\\help";
         }
 
         if (message.equals(translateMessage)) {
-            clearKeyboardAndRows(keyboard, firstKeyboardRow, secondKeyboardRow);
-
-            firstKeyboardRow.add(helpMessage);
-            secondKeyboardRow.add(statisticMessage);
-
-            addRowsInKeyboard(keyboard, firstKeyboardRow, secondKeyboardRow);
-            replykeyboardMarkup.setKeyboard(keyboard);
             return "\\translation";
         }
 
         if (message.equals(statisticMessage)) {
-            clearKeyboardAndRows(keyboard, firstKeyboardRow, secondKeyboardRow);
-
-            firstKeyboardRow.add(translateMessage);
-            secondKeyboardRow.add(helpMessage);
-
-            addRowsInKeyboard(keyboard, firstKeyboardRow, secondKeyboardRow);
-            replykeyboardMarkup.setKeyboard(keyboard);
             return "\\stat";
         }
 
